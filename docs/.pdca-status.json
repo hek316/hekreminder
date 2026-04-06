@@ -1,0 +1,101 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-04-06T14:41:41.411Z",
+  "activeFeatures": [
+    "domain",
+    "repository",
+    "service",
+    "controller"
+  ],
+  "primaryFeature": "domain",
+  "features": {
+    "domain": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-06T14:41:28.012Z",
+        "lastUpdated": "2026-04-06T14:41:28.012Z"
+      },
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/domain/Reminder.java"
+    },
+    "repository": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-06T14:41:31.049Z",
+        "lastUpdated": "2026-04-06T14:41:31.049Z"
+      },
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/repository/ReminderRepository.java"
+    },
+    "service": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-06T14:41:36.387Z",
+        "lastUpdated": "2026-04-06T14:41:36.387Z"
+      },
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/service/ReminderService.java"
+    },
+    "controller": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-06T14:41:41.411Z",
+        "lastUpdated": "2026-04-06T14:41:41.411Z"
+      },
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/controller/ReminderController.java"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-04-06T14:28:27.093Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-04-06T14:41:41.411Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-04-06T14:41:28.012Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-06T14:41:31.049Z",
+      "feature": "repository",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-06T14:41:36.387Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-06T14:41:41.411Z",
+      "feature": "controller",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}
