@@ -1,0 +1,159 @@
+openapi: 3.1.0
+
+info:
+  title: HekReminder API
+  description: Apple Reminder 스타일 웹 리마인더 앱 REST API
+  version: 0.1.0
+
+servers:
+  - url: http://localhost:8080
+    description: 로컬 개발 서버
+
+tags:
+  - name: lists
+    description: 리마인더 목록 관리
+
+paths:
+  /api/lists:
+    get:
+      tags: [lists]
+      summary: 전체 목록 조회
+      operationId: getAllLists
+      responses:
+        "200":
+          description: 목록 조회 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReminderListResponse"
+
+    post:
+      tags: [lists]
+      summary: 목록 생성
+      operationId: createList
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReminderListRequest"
+      responses:
+        "201":
+          description: 목록 생성 성공
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReminderListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /api/lists/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: 목록 ID
+
+    put:
+      tags: [lists]
+      summary: 목록 수정
+      operationId: updateList
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReminderListRequest"
+      responses:
+        "200":
+          description: 목록 수정 성공
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReminderListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+    delete:
+      tags: [lists]
+      summary: 목록 삭제
+      description: 목록과 하위 리마인더를 함께 삭제합니다.
+      operationId: deleteList
+      responses:
+        "204":
+          description: 목록 삭제 성공
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+components:
+  schemas:
+    ReminderListRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: 목록 이름
+          example: 개인
+        color:
+          type: string
+          description: "목록 색상 (HEX). 미입력 시 기본값: #007AFF"
+          example: "#007AFF"
+        icon:
+          type: string
+          description: 목록 아이콘 (이모지)
+          example: "🏠"
+
+    ReminderListResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 목록 ID
+          example: 1
+        name:
+          type: string
+          description: 목록 이름
+          example: 개인
+        color:
+          type: string
+          description: 목록 색상 (HEX)
+          example: "#007AFF"
+        icon:
+          type: string
+          description: 목록 아이콘 (이모지)
+          example: "🏠"
+        createdAt:
+          type: string
+          format: date-time
+          description: 생성 일시 (ISO-8601)
+          example: "2026-04-07T12:00:00"
+        updatedAt:
+          type: string
+          format: date-time
+          description: 마지막 수정 일시 (ISO-8601)
+          example: "2026-04-07T12:30:00"
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 에러 메시지
+          example: "ReminderList not found: 999"
+
+  responses:
+    BadRequest:
+      description: 잘못된 요청 (유효성 검사 실패 또는 리소스 없음)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
