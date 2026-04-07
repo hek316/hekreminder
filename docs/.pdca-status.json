@@ -1,11 +1,12 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-04-06T14:41:41.411Z",
+  "lastUpdated": "2026-04-07T12:13:24.054Z",
   "activeFeatures": [
     "domain",
     "repository",
     "service",
-    "controller"
+    "controller",
+    "config"
   ],
   "primaryFeature": "domain",
   "features": {
@@ -18,9 +19,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-04-06T14:41:28.012Z",
-        "lastUpdated": "2026-04-06T14:41:28.012Z"
+        "lastUpdated": "2026-04-07T12:13:24.054Z"
       },
-      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/domain/Reminder.java"
+      "lastFile": "/Users/eunkyung/hekreminder/src/test/java/com/hekreminder/domain/ReminderListTest.java"
     },
     "repository": {
       "phase": "do",
@@ -31,9 +32,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-04-06T14:41:31.049Z",
-        "lastUpdated": "2026-04-06T14:41:31.049Z"
+        "lastUpdated": "2026-04-07T12:06:19.516Z"
       },
-      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/repository/ReminderRepository.java"
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/repository/ReminderListRepository.java"
     },
     "service": {
       "phase": "do",
@@ -60,6 +61,19 @@
         "lastUpdated": "2026-04-06T14:41:41.411Z"
       },
       "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/controller/ReminderController.java"
+    },
+    "config": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-07T12:03:32.868Z",
+        "lastUpdated": "2026-04-07T12:03:32.868Z"
+      },
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/config/JpaAuditingConfig.java"
     }
   },
   "pipeline": {
@@ -70,7 +84,7 @@
   "session": {
     "startedAt": "2026-04-06T14:28:27.093Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-04-06T14:41:41.411Z"
+    "lastActivity": "2026-04-07T12:13:24.054Z"
   },
   "history": [
     {
@@ -94,6 +108,78 @@
     {
       "timestamp": "2026-04-06T14:41:41.411Z",
       "feature": "controller",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T11:51:43.193Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:03:25.436Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:03:29.159Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:03:32.868Z",
+      "feature": "config",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:03:46.733Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:03:50.755Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:06:13.037Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:06:16.813Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:06:19.516Z",
+      "feature": "repository",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:06:31.636Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:13:08.746Z",
+      "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:13:24.054Z",
+      "feature": "domain",
       "phase": "do",
       "action": "updated"
     }
