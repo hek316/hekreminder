@@ -9,57 +9,57 @@
 
 ### Backend
 
-- [ ] `Reminder` 엔티티 수정
-  - [ ] `description` → `notes` 필드 rename
-  - [ ] `priority` 필드 추가 (`enum`: NONE / LOW / MEDIUM / HIGH)
-  - [ ] `flagged` 필드 추가 (`boolean`, default false)
-  - [ ] `createdAt` 필드 추가 (`LocalDateTime`, 자동 생성)
-- [ ] DTO 생성
-  - [ ] `ReminderRequest` DTO (`title`, `notes`, `dueDate`, `priority`, `flagged`)
-  - [ ] `ReminderResponse` DTO (`id`, `title`, `notes`, `dueDate`, `completed`, `priority`, `flagged`, `createdAt`)
-- [ ] `ReminderRepository` — 필터 쿼리 메서드 추가
-  - [ ] `filter=today` 쿼리 (오늘 마감, 미완료)
-  - [ ] `filter=scheduled` 쿼리 (미래 마감, 미완료)
-  - [ ] `filter=flagged` 쿼리 (flagged=true, 미완료)
-  - [ ] `filter=completed` 쿼리
-- [ ] `ReminderService` 구현
-  - [ ] 전체 목록 조회 (filter 파라미터 처리)
-  - [ ] 리마인더 생성
-  - [ ] 리마인더 수정
-  - [ ] 완료 토글
-  - [ ] 깃발 토글
-  - [ ] 리마인더 삭제
-- [ ] `ReminderController` REST API 구현
-  - [ ] `GET /api/reminders` (filter 쿼리 파라미터 포함)
-  - [ ] `POST /api/reminders`
-  - [ ] `PUT /api/reminders/{id}`
-  - [ ] `PATCH /api/reminders/{id}/complete`
-  - [ ] `PATCH /api/reminders/{id}/flag`
-  - [ ] `DELETE /api/reminders/{id}`
-- [ ] CORS 설정 (`http://localhost:3000` 허용)
-- [ ] `@RestControllerAdvice` 글로벌 예외 처리
+- [x] `Reminder` 엔티티 수정
+  - [x] `description` → `notes` 필드 rename
+  - [x] `priority` 필드 추가 (`enum`: NONE / LOW / MEDIUM / HIGH)
+  - [x] `flagged` 필드 추가 (`boolean`, default false)
+  - [x] `createdAt` 필드 추가 (`LocalDateTime`, 자동 생성)
+- [x] DTO 생성
+  - [x] `ReminderRequest` DTO (`title`, `notes`, `dueDate`, `priority`, `flagged`)
+  - [x] `ReminderResponse` DTO (`id`, `title`, `notes`, `dueDate`, `completed`, `priority`, `flagged`, `createdAt`)
+- [x] `ReminderRepository` — 필터 쿼리 메서드 추가
+  - [x] `filter=today` 쿼리 (오늘 마감, 미완료)
+  - [x] `filter=scheduled` 쿼리 (미래 마감, 미완료)
+  - [x] `filter=flagged` 쿼리 (flagged=true, 미완료)
+  - [x] `filter=completed` 쿼리
+- [x] `ReminderService` 구현
+  - [x] 전체 목록 조회 (filter 파라미터 처리)
+  - [x] 리마인더 생성
+  - [x] 리마인더 수정
+  - [x] 완료 토글
+  - [x] 깃발 토글
+  - [x] 리마인더 삭제
+- [x] `ReminderController` REST API 구현
+  - [x] `GET /api/reminders` (filter 쿼리 파라미터 포함)
+  - [x] `POST /api/reminders`
+  - [x] `PUT /api/reminders/{id}`
+  - [x] `PATCH /api/reminders/{id}/complete`
+  - [x] `PATCH /api/reminders/{id}/flag`
+  - [x] `DELETE /api/reminders/{id}`
+- [x] CORS 설정 (`http://localhost:3000` 허용)
+- [x] `@RestControllerAdvice` 글로벌 예외 처리
 
 ### Frontend
 
-- [ ] Next.js 프로젝트 초기화 (`/frontend`, TypeScript + Tailwind + App Router)
-- [ ] 타입 정의 (`types/reminder.ts`) — `Reminder` 인터페이스
-- [ ] API 클라이언트 (`lib/api.ts`) — fetch 래퍼, baseURL: `localhost:8080`
-  - [ ] `getReminders(filter?)` 함수
-  - [ ] `createReminder(data)` 함수
-  - [ ] `updateReminder(id, data)` 함수
-  - [ ] `toggleComplete(id)` 함수
-  - [ ] `toggleFlag(id)` 함수
-  - [ ] `deleteReminder(id)` 함수
-- [ ] `ReminderItem` 컴포넌트 — 단일 리마인더 행
-  - [ ] 원형 체크박스 (파란 테두리 → 완료 시 채워짐)
-  - [ ] 완료 시 취소선 표시
-  - [ ] 마감일 우측 표시 (기한 초과 시 빨간색)
-  - [ ] 깃발 아이콘 표시
-- [ ] `ReminderList` 컴포넌트 — 목록 렌더링
-- [ ] `AddReminderInput` 컴포넌트 — `+ 새로운 리마인더` 하단 입력창
-  - [ ] Enter로 저장
-  - [ ] Escape로 취소
-- [ ] `app/page.tsx` — 메인 페이지 (단일 화면)
+- [x] Next.js 프로젝트 초기화 (`/frontend`, TypeScript + Tailwind + App Router)
+- [x] 타입 정의 (`types/reminder.ts`) — `Reminder` 인터페이스
+- [x] API 클라이언트 (`lib/api.ts`) — fetch 래퍼, baseURL: `localhost:8080`
+  - [x] `getReminders(filter?)` 함수
+  - [x] `createReminder(data)` 함수
+  - [x] `updateReminder(id, data)` 함수
+  - [x] `toggleComplete(id)` 함수
+  - [x] `toggleFlag(id)` 함수
+  - [x] `deleteReminder(id)` 함수
+- [x] `ReminderItem` 컴포넌트 — 단일 리마인더 행
+  - [x] 원형 체크박스 (파란 테두리 → 완료 시 채워짐)
+  - [x] 완료 시 취소선 표시
+  - [x] 마감일 우측 표시 (기한 초과 시 빨간색)
+  - [x] 깃발 아이콘 표시
+- [x] `ReminderList` 컴포넌트 — 목록 렌더링
+- [x] `AddReminderInput` 컴포넌트 — `+ 새로운 리마인더` 하단 입력창
+  - [x] Enter로 저장
+  - [x] Escape로 취소
+- [x] `app/page.tsx` — 메인 페이지 (단일 화면)
 
 ---
 
