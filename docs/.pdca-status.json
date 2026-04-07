@@ -1,12 +1,13 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-04-07T12:13:24.054Z",
+  "lastUpdated": "2026-04-07T12:54:24.098Z",
   "activeFeatures": [
     "domain",
     "repository",
     "service",
     "controller",
-    "config"
+    "config",
+    "inp"
   ],
   "primaryFeature": "domain",
   "features": {
@@ -45,9 +46,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-04-06T14:41:36.387Z",
-        "lastUpdated": "2026-04-06T14:41:36.387Z"
+        "lastUpdated": "2026-04-07T12:54:24.098Z"
       },
-      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/service/ReminderService.java"
+      "lastFile": "/Users/eunkyung/hekreminder/src/test/java/com/hekreminder/service/ReminderListServiceTest.java"
     },
     "controller": {
       "phase": "do",
@@ -74,6 +75,19 @@
         "lastUpdated": "2026-04-07T12:03:32.868Z"
       },
       "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/config/JpaAuditingConfig.java"
+    },
+    "inp": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-07T12:49:15.514Z",
+        "lastUpdated": "2026-04-07T12:54:16.548Z"
+      },
+      "lastFile": "/Users/eunkyung/hekreminder/src/main/java/com/hekreminder/service/ports/inp/ReminderListService.java"
     }
   },
   "pipeline": {
@@ -84,7 +98,7 @@
   "session": {
     "startedAt": "2026-04-06T14:28:27.093Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-04-07T12:13:24.054Z"
+    "lastActivity": "2026-04-07T12:54:24.098Z"
   },
   "history": [
     {
@@ -180,6 +194,84 @@
     {
       "timestamp": "2026-04-07T12:13:24.054Z",
       "feature": "domain",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:30:00.773Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:30:15.530Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:38:48.665Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:43:42.577Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:43:48.775Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:43:53.048Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:49:15.514Z",
+      "feature": "inp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:49:22.327Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:49:34.270Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:49:38.341Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:54:16.548Z",
+      "feature": "inp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:54:20.944Z",
+      "feature": "service",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-07T12:54:24.098Z",
+      "feature": "service",
       "phase": "do",
       "action": "updated"
     }
