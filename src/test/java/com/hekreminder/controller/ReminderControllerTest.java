@@ -64,12 +64,15 @@ class ReminderControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/reminders - title이 없으면 400을 반환한다")
-    void create_returns_400_when_title_blank() throws Exception {
+    @DisplayName("POST /api/reminders - title이 없으면 400과 필드 에러를 반환한다")
+    void create_returns_400_with_field_errors_when_title_blank() throws Exception {
         mockMvc.perform(post("/api/reminders")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(toJson(req("", null, null, null, false))))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errors").isArray())
+                .andExpect(jsonPath("$.errors[0].field").value("title"))
+                .andExpect(jsonPath("$.errors[0].message").isNotEmpty());
     }
 
     @Test

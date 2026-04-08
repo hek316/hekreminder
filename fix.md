@@ -27,7 +27,7 @@
 
 ## 🟠 Major
 
-- [ ] **[M1] @Valid 실패 시 에러 핸들러 추가**
+- [x] **[M1] @Valid 실패 시 에러 핸들러 추가**
   - 파일: `controller/GlobalExceptionHandler.java`
   - `MethodArgumentNotValidException` 핸들러 추가
   - 응답 포맷: `{ field, message }` 배열 형태
