@@ -32,7 +32,7 @@
   - `MethodArgumentNotValidException` 핸들러 추가
   - 응답 포맷: `{ field, message }` 배열 형태
 
-- [ ] **[M2] H2 Console dev 프로파일로 분리**
+- [x] **[M2] H2 Console dev 프로파일로 분리**
   - 파일: `src/main/resources/application.properties`
   - `application-dev.properties` 생성 후 H2 관련 설정 이동
   - 운영 환경에서 H2 Console 자동 비활성화
