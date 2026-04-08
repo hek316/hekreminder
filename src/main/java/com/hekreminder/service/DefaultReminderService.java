@@ -49,7 +49,7 @@ public class DefaultReminderService implements ReminderService {
                 request.getNotes(),
                 request.getDueDate(),
                 request.getPriority(),
-                request.isFlagged()
+                Boolean.TRUE.equals(request.getFlagged())
         ));
     }
 
@@ -62,7 +62,7 @@ public class DefaultReminderService implements ReminderService {
                 request.getNotes(),
                 request.getDueDate(),
                 request.getPriority(),
-                request.isFlagged()
+                Boolean.TRUE.equals(request.getFlagged())
         );
         return reminder;
     }

@@ -22,5 +22,5 @@ public class ReminderRequest {
 
     private Priority priority;
 
-    private boolean flagged;
+    private Boolean flagged;
 }
