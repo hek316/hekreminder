@@ -26,4 +26,15 @@ public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 
     // 기본: 미완료 전체
     List<Reminder> findByCompletedFalse();
+
+    // counts
+    @Query("SELECT COUNT(r) FROM Reminder r WHERE r.dueDate >= :start AND r.dueDate < :end AND r.completed = false")
+    long countTodayReminders(@Param("start") LocalDateTime start, @Param("end") LocalDateTime end);
+
+    @Query("SELECT COUNT(r) FROM Reminder r WHERE r.dueDate >= :from AND r.completed = false")
+    long countScheduledReminders(@Param("from") LocalDateTime from);
+
+    long countByFlaggedTrueAndCompletedFalse();
+
+    long countByCompletedFalse();
 }

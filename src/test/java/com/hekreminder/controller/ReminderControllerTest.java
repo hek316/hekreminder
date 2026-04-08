@@ -164,6 +164,20 @@ class ReminderControllerTest {
                 .andExpect(jsonPath("$", hasSize(0)));
     }
 
+    @Test
+    @DisplayName("GET /api/reminders/counts - 카운트를 반환한다")
+    void getCounts_returns_counts() throws Exception {
+        mockMvc.perform(post("/api/reminders").contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(req("깃발", null, null, Priority.NONE, true))));
+        mockMvc.perform(post("/api/reminders").contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(req("일반", null, null, Priority.NONE, false))));
+
+        mockMvc.perform(get("/api/reminders/counts"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.all").value(2))
+                .andExpect(jsonPath("$.flagged").value(1));
+    }
+
     private ReminderRequest req(String title, String notes, LocalDateTime dueDate,
                                 Priority priority, boolean flagged) {
         return new ReminderRequest(title, notes, dueDate, priority, flagged);

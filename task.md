@@ -67,26 +67,26 @@
 
 ### Backend
 
-- [ ] `GET /api/reminders/counts` API 구현
-  - [ ] `{ today, scheduled, all, flagged }` 응답
+- [x] `GET /api/reminders/counts` API 구현
+  - [x] `{ today, scheduled, all, flagged }` 응답
 
 ### Frontend
 
-- [ ] `app/layout.tsx` — 사이드바 + 메인 영역 분리 레이아웃
-- [ ] `app/reminders/page.tsx` — filter 파라미터 기반 뷰 렌더링
-- [ ] `SmartListCard` 컴포넌트 — 개별 스마트 카드
-  - [ ] 오늘 카드 (`#007AFF`)
-  - [ ] 예정 카드 (`#FF3B30`)
-  - [ ] 전체 카드 (`#000000`)
-  - [ ] 깃발 카드 (`#FF9500`)
-  - [ ] 우측 상단 흰색 숫자 (28px bold)
-  - [ ] 호버 효과 (`brightness(1.08)`)
-  - [ ] 선택 효과 (`scale(0.97)`)
-- [ ] `SmartListGrid` 컴포넌트 — 2×2 그리드 컨테이너
-- [ ] `Sidebar` 컴포넌트 — 전체 사이드바 (`#F2F2F7` 배경, 260px 고정)
-  - [ ] 스마트 카드 그리드 영역
-  - [ ] "나의 목록" 섹션 (Phase 3 연동 예정)
-  - [ ] 카드 클릭 → URL 쿼리 변경 → 메인 영역 필터링
+- [x] `app/layout.tsx` — 사이드바 + 메인 영역 분리 레이아웃
+- [x] `app/reminders/page.tsx` — filter 파라미터 기반 뷰 렌더링
+- [x] `SmartListCard` 컴포넌트 — 개별 스마트 카드
+  - [x] 오늘 카드 (`#007AFF`)
+  - [x] 예정 카드 (`#FF3B30`)
+  - [x] 전체 카드 (`#000000`)
+  - [x] 깃발 카드 (`#FF9500`)
+  - [x] 우측 상단 흰색 숫자 (28px bold)
+  - [x] 호버 효과 (`brightness(1.08)`)
+  - [x] 선택 효과 (`scale(0.97)`)
+- [x] `SmartListGrid` 컴포넌트 — 2×2 그리드 컨테이너
+- [x] `Sidebar` 컴포넌트 — 전체 사이드바 (`#F2F2F7` 배경, 260px 고정)
+  - [x] 스마트 카드 그리드 영역
+  - [x] "나의 목록" 섹션 (Phase 3 연동 예정)
+  - [x] 카드 클릭 → URL 쿼리 변경 → 메인 영역 필터링
 
 ---
 

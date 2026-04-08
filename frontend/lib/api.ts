@@ -42,3 +42,14 @@ export function toggleFlag(id: number): Promise<Reminder> {
 export function deleteReminder(id: number): Promise<void> {
   return request(`/api/reminders/${id}`, { method: "DELETE" });
 }
+
+export interface ReminderCounts {
+  today: number;
+  scheduled: number;
+  all: number;
+  flagged: number;
+}
+
+export function getRemindercounts(): Promise<ReminderCounts> {
+  return request("/api/reminders/counts");
+}
