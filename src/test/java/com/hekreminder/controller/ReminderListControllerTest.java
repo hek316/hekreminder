@@ -68,6 +68,15 @@ class ReminderListControllerTest {
     }
 
     @Test
+    @DisplayName("POST /api/lists - color가 HEX 형식이 아니면 400을 반환한다")
+    void create_returns_400_when_color_invalid() throws Exception {
+        mockMvc.perform(post("/api/lists")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(new ReminderListRequest("개인", "notacolor", null))))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     @DisplayName("GET /api/lists - 생성된 목록이 조회된다")
     void getAll_returns_created_lists() throws Exception {
         mockMvc.perform(post("/api/lists")

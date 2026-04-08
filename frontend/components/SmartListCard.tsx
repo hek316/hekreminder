@@ -22,14 +22,14 @@ export default function SmartListCard({ card }: { card: SmartCard }) {
   return (
     <button
       onClick={handleClick}
-      className="rounded-xl p-3 flex flex-col justify-between h-20 w-full text-left transition-all duration-150"
-      style={{
-        backgroundColor: card.color,
-        filter: active ? "brightness(0.92)" : undefined,
-        transform: active ? "scale(0.97)" : undefined,
-      }}
-      onMouseEnter={(e) => { if (!active) (e.currentTarget as HTMLElement).style.filter = "brightness(1.08)"; }}
-      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.filter = active ? "brightness(0.92)" : ""; }}
+      className={[
+        "rounded-xl p-3 flex flex-col justify-between h-20 w-full text-left",
+        "transition-all duration-150",
+        active
+          ? "brightness-90 scale-95"
+          : "hover:brightness-110",
+      ].join(" ")}
+      style={{ backgroundColor: card.color }}
     >
       <span className="text-[28px] font-bold text-white leading-none">{card.count}</span>
       <div className="flex items-center gap-1">

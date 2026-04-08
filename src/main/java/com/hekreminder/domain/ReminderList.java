@@ -4,13 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "reminder_lists")
 @Getter
 @NoArgsConstructor
-public class ReminderList {
+public class ReminderList extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,25 +22,17 @@ public class ReminderList {
 
     private String icon;
 
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
-
     public ReminderList(String name, String color, String icon) {
         this.name = name;
         this.color = color != null ? color : "#007AFF";
         this.icon = icon;
-        LocalDateTime now = LocalDateTime.now();
-        this.createdAt = now;
-        this.updatedAt = now;
+        initTimestamps();
     }
 
     public void update(String name, String color, String icon) {
         this.name = name;
-        this.color = color;
+        this.color = color != null ? color : "#007AFF";
         this.icon = icon;
-        this.updatedAt = LocalDateTime.now();
+        touchUpdatedAt();
     }
 }

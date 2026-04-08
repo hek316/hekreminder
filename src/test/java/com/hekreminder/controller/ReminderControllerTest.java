@@ -191,6 +191,23 @@ class ReminderControllerTest {
     }
 
     @Test
+    @DisplayName("GET /api/reminders?filter=scheduled - 오늘 마감은 포함하지 않는다")
+    void scheduled_filter_excludes_today() throws Exception {
+        LocalDateTime today = LocalDate.now().atTime(12, 0);
+        LocalDateTime tomorrow = today.plusDays(1);
+
+        mockMvc.perform(post("/api/reminders").contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(req("오늘마감", null, today, Priority.NONE, false))));
+        mockMvc.perform(post("/api/reminders").contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(req("내일마감", null, tomorrow, Priority.NONE, false))));
+
+        mockMvc.perform(get("/api/reminders?filter=scheduled"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].title").value("내일마감"));
+    }
+
+    @Test
     @DisplayName("GET /api/reminders/counts - 카운트를 반환한다")
     void getCounts_returns_counts() throws Exception {
         mockMvc.perform(post("/api/reminders").contentType(MediaType.APPLICATION_JSON)

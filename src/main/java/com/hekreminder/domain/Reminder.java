@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "reminders")
 @Getter
 @NoArgsConstructor
-public class Reminder {
+public class Reminder extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,21 +33,13 @@ public class Reminder {
     @Column(nullable = false)
     private boolean flagged = false;
 
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
-
     public Reminder(String title, String notes, LocalDateTime dueDate, Priority priority, boolean flagged) {
         this.title = title;
         this.notes = notes;
         this.dueDate = dueDate;
         this.priority = priority != null ? priority : Priority.NONE;
         this.flagged = flagged;
-        LocalDateTime now = LocalDateTime.now();
-        this.createdAt = now;
-        this.updatedAt = now;
+        initTimestamps();
     }
 
     public void update(String title, String notes, LocalDateTime dueDate, Priority priority, boolean flagged) {
@@ -56,16 +48,16 @@ public class Reminder {
         this.dueDate = dueDate;
         this.priority = priority != null ? priority : Priority.NONE;
         this.flagged = flagged;
-        this.updatedAt = LocalDateTime.now();
+        touchUpdatedAt();
     }
 
     public void toggleComplete() {
         this.completed = !this.completed;
-        this.updatedAt = LocalDateTime.now();
+        touchUpdatedAt();
     }
 
     public void toggleFlag() {
         this.flagged = !this.flagged;
-        this.updatedAt = LocalDateTime.now();
+        touchUpdatedAt();
     }
 }

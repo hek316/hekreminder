@@ -65,35 +65,35 @@
 
 ## 🟡 Minor
 
-- [ ] **[m1] ReminderList.update() color null 방어 로직 추가**
+- [x] **[m1] ReminderList.update() color null 방어 로직 추가**
   - 파일: `domain/ReminderList.java:42`
   - `color != null ? color : "#007AFF"` 조건 추가
 
-- [ ] **[m2] getRemindercounts 함수명 camelCase 수정**
+- [x] **[m2] getRemindercounts 함수명 camelCase 수정**
   - 파일: `frontend/lib/api.ts:53`
   - `getRemindercounts` → `getReminderCounts`
 
-- [ ] **[m3] BaseEntity 추출 (timestamp 중복 제거)**
+- [x] **[m3] BaseEntity 추출 (timestamp 중복 제거)**
   - 파일: `domain/Reminder.java`, `domain/ReminderList.java`
   - `@MappedSuperclass BaseEntity`에 `createdAt`, `updatedAt` 통합
   - `@PrePersist` / `@PreUpdate` 또는 `@CreationTimestamp` / `@UpdateTimestamp` 활용
 
-- [ ] **[m4] URL 쿼리 파라미터 타입 가드 추가**
+- [x] **[m4] URL 쿼리 파라미터 타입 가드 추가**
   - 파일: `frontend/app/reminders/page.tsx:25`
   - `as ReminderFilter` 캐스팅 → 유효한 값인지 검증 후 사용
 
-- [ ] **[m5] ReminderListRequest color 필드 유효성 검증 추가**
+- [x] **[m5] ReminderListRequest color 필드 유효성 검증 추가**
   - 파일: `dto/ReminderListRequest.java`
   - `@Pattern(regexp = "^#[0-9A-Fa-f]{6}$")` 어노테이션 추가
 
-- [ ] **[m6] findScheduledReminders 오늘 마감 건 중복 수정**
+- [x] **[m6] findScheduledReminders 오늘 마감 건 중복 수정**
   - 파일: `repository/ReminderRepository.java:18`
   - `from`을 `LocalDateTime.now()` → 내일 시작(`LocalDate.now().plusDays(1).atStartOfDay()`)으로 변경
 
-- [ ] **[m7] SmartListCard hover 스타일 Tailwind로 교체**
+- [x] **[m7] SmartListCard hover 스타일 Tailwind로 교체**
   - 파일: `frontend/components/SmartListCard.tsx:31`
   - `onMouseEnter`/`onMouseLeave` DOM 직접 수정 → Tailwind `hover:` 유틸리티 클래스 사용
 
-- [ ] **[m8] Service 인터페이스 반환 타입 DTO 전환 검토**
+- [~] **[m8] Service 인터페이스 반환 타입 DTO 전환 검토** _(skip: 현 단계에서 over-engineering, 추후 고려)_
   - 파일: `service/ports/inp/ReminderService.java`
   - 현재 엔티티 직접 반환 → 향후 DTO 반환으로 계층 경계 명확화

@@ -60,6 +60,16 @@ class ReminderListTest {
     }
 
     @Test
+    @DisplayName("update() 호출 시 color가 null이면 기본값 #007AFF가 유지된다")
+    void update_null_color_falls_back_to_default() {
+        ReminderList list = new ReminderList("개인", "#007AFF", "🏠");
+
+        list.update("업무", null, "💼");
+
+        assertThat(list.getColor()).isEqualTo("#007AFF");
+    }
+
+    @Test
     @DisplayName("update() 호출 시 updatedAt이 갱신되고 createdAt은 불변이다")
     void update_refreshes_updatedAt_but_not_createdAt() throws InterruptedException {
         ReminderList list = new ReminderList("개인", "#007AFF", "🏠");

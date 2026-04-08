@@ -7,16 +7,25 @@ import { useRefreshCounts } from "@/lib/countsContext";
 import ReminderList from "@/components/ReminderList";
 import AddReminderInput from "@/components/AddReminderInput";
 
-const FILTER_LABEL: Record<string, { title: string; color: string }> = {
+const VALID_FILTERS = ["today", "scheduled", "all", "flagged", "completed"] as const;
+type FilterKey = typeof VALID_FILTERS[number];
+
+function toFilterKey(value: string | undefined): FilterKey {
+  return VALID_FILTERS.includes(value as FilterKey) ? (value as FilterKey) : "all";
+}
+
+const FILTER_LABEL: Record<FilterKey, { title: string; color: string }> = {
   today:     { title: "오늘",   color: "#007AFF" },
   scheduled: { title: "예정",   color: "#FF3B30" },
   all:       { title: "전체",   color: "#000000" },
   flagged:   { title: "깃발",   color: "#FF9500" },
+  completed: { title: "완료됨", color: "#8E8E93" },
 };
 
 export default function RemindersPage({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
-  const { filter } = use(searchParams);
-  const meta = FILTER_LABEL[filter ?? "all"] ?? FILTER_LABEL["all"];
+  const { filter: rawFilter } = use(searchParams);
+  const filter = toFilterKey(rawFilter);
+  const meta = FILTER_LABEL[filter];
 
   const refreshCounts = useRefreshCounts();
   const [reminders, setReminders] = useState<Reminder[]>([]);
@@ -24,7 +33,7 @@ export default function RemindersPage({ searchParams }: { searchParams: Promise<
 
   useEffect(() => {
     setLoading(true);
-    getReminders(filter as ReminderFilter)
+    getReminders(filter === "all" ? undefined : filter)
       .then(setReminders)
       .finally(() => setLoading(false));
   }, [filter]);

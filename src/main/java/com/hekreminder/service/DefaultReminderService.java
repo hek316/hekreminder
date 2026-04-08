@@ -32,7 +32,7 @@ public class DefaultReminderService implements ReminderService {
                 LocalDateTime end = start.plusDays(1);
                 yield reminderRepository.findTodayReminders(start, end);
             }
-            case "scheduled" -> reminderRepository.findScheduledReminders(LocalDateTime.now());
+            case "scheduled" -> reminderRepository.findScheduledReminders(LocalDate.now().plusDays(1).atStartOfDay());
             case "flagged"   -> reminderRepository.findByFlaggedTrueAndCompletedFalse();
             case "completed" -> reminderRepository.findByCompletedTrue();
             default          -> reminderRepository.findByCompletedFalse();
@@ -44,7 +44,7 @@ public class DefaultReminderService implements ReminderService {
         LocalDateTime start = LocalDate.now().atStartOfDay();
         return new ReminderCountsResponse(
                 reminderRepository.countTodayReminders(start, start.plusDays(1)),
-                reminderRepository.countScheduledReminders(LocalDateTime.now()),
+                reminderRepository.countScheduledReminders(LocalDate.now().plusDays(1).atStartOfDay()),
                 reminderRepository.countByCompletedFalse(),
                 reminderRepository.countByFlaggedTrueAndCompletedFalse()
         );
