@@ -1,13 +1,21 @@
 import { Reminder, ReminderFilter, ReminderRequest } from "@/types/reminder";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE_URL}${path}`, {
     headers: { "Content-Type": "application/json" },
     ...options,
   });
-  if (!res.ok) throw new Error(`API error ${res.status}: ${path}`);
+  if (!res.ok) {
+    let message = `API error ${res.status}: ${path}`;
+    try {
+      const body = await res.json();
+      if (body?.message) message = body.message;
+      else if (body?.errors?.[0]?.message) message = body.errors[0].message;
+    } catch { /* json 파싱 실패 시 기본 메시지 사용 */ }
+    throw new Error(message);
+  }
   if (res.status === 204) return undefined as T;
   return res.json();
 }
@@ -50,6 +58,6 @@ export interface ReminderCounts {
   flagged: number;
 }
 
-export function getRemindercounts(): Promise<ReminderCounts> {
+export function getReminderCounts(): Promise<ReminderCounts> {
   return request("/api/reminders/counts");
 }

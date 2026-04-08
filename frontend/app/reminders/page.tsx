@@ -3,6 +3,7 @@
 import { use, useEffect, useState } from "react";
 import { Reminder, ReminderFilter } from "@/types/reminder";
 import { createReminder, deleteReminder, getReminders, toggleComplete, toggleFlag } from "@/lib/api";
+import { useRefreshCounts } from "@/lib/countsContext";
 import ReminderList from "@/components/ReminderList";
 import AddReminderInput from "@/components/AddReminderInput";
 
@@ -17,6 +18,7 @@ export default function RemindersPage({ searchParams }: { searchParams: Promise<
   const { filter } = use(searchParams);
   const meta = FILTER_LABEL[filter ?? "all"] ?? FILTER_LABEL["all"];
 
+  const refreshCounts = useRefreshCounts();
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,23 +30,43 @@ export default function RemindersPage({ searchParams }: { searchParams: Promise<
   }, [filter]);
 
   async function handleAdd(title: string) {
-    const created = await createReminder({ title });
-    setReminders((prev) => [...prev, created]);
+    try {
+      const created = await createReminder({ title });
+      setReminders((prev) => [...prev, created]);
+      refreshCounts();
+    } catch (e) {
+      alert((e as Error).message);
+    }
   }
 
   async function handleToggleComplete(id: number) {
-    const updated = await toggleComplete(id);
-    setReminders((prev) => prev.map((r) => (r.id === id ? updated : r)));
+    try {
+      const updated = await toggleComplete(id);
+      setReminders((prev) => prev.map((r) => (r.id === id ? updated : r)));
+      refreshCounts();
+    } catch (e) {
+      alert((e as Error).message);
+    }
   }
 
   async function handleToggleFlag(id: number) {
-    const updated = await toggleFlag(id);
-    setReminders((prev) => prev.map((r) => (r.id === id ? updated : r)));
+    try {
+      const updated = await toggleFlag(id);
+      setReminders((prev) => prev.map((r) => (r.id === id ? updated : r)));
+      refreshCounts();
+    } catch (e) {
+      alert((e as Error).message);
+    }
   }
 
   async function handleDelete(id: number) {
-    await deleteReminder(id);
-    setReminders((prev) => prev.filter((r) => r.id !== id));
+    try {
+      await deleteReminder(id);
+      setReminders((prev) => prev.filter((r) => r.id !== id));
+      refreshCounts();
+    } catch (e) {
+      alert((e as Error).message);
+    }
   }
 
   const incomplete = reminders.filter((r) => !r.completed);

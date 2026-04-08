@@ -37,27 +37,27 @@
   - `application-dev.properties` 생성 후 H2 관련 설정 이동
   - 운영 환경에서 H2 Console 자동 비활성화
 
-- [ ] **[M3] 프론트엔드 API Base URL 환경변수화**
+- [x] **[M3] 프론트엔드 API Base URL 환경변수화**
   - 파일: `frontend/lib/api.ts:3`
   - `http://localhost:8080` → `process.env.NEXT_PUBLIC_API_URL`
   - `frontend/.env.local` 파일 생성
 
-- [ ] **[M4] API 에러 응답 body 파싱**
+- [x] **[M4] API 에러 응답 body 파싱**
   - 파일: `frontend/lib/api.ts:5-12`
   - 에러 시 `res.json()`으로 서버 에러 메시지 파싱
   - 사용자에게 의미 있는 에러 메시지 전달
 
-- [ ] **[M5] API 호출 전체에 try/catch 추가**
+- [x] **[M5] API 호출 전체에 try/catch 추가**
   - 파일: `frontend/app/reminders/page.tsx:30-47`
   - `handleAdd`, `handleToggleComplete`, `handleToggleFlag`, `handleDelete` 에러 처리
   - 실패 시 에러 토스트 또는 사용자 알림 표시
 
-- [ ] **[M6] Sidebar 카운트 실시간 동기화**
+- [x] **[M6] Sidebar 카운트 실시간 동기화**
   - 파일: `frontend/components/Sidebar.tsx`
   - 리마인더 생성/삭제/완료 토글 시 카운트 자동 갱신
   - Context 또는 React Query 도입 검토
 
-- [ ] **[M7] 삭제 시 확인 다이얼로그 추가**
+- [x] **[M7] 삭제 시 확인 다이얼로그 추가**
   - 파일: `frontend/components/ReminderItem.tsx:41`
   - 우클릭 즉시 삭제 → 확인 다이얼로그 후 삭제
 

@@ -38,7 +38,12 @@ export default function ReminderItem({ reminder, color = "#007AFF", onToggleComp
   return (
     <div
       className="flex items-start gap-3 px-4 py-2 group hover:bg-gray-50 rounded-lg"
-      onContextMenu={(e) => { e.preventDefault(); onDelete(reminder.id); }}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        if (window.confirm(`"${reminder.title}"을(를) 삭제할까요?`)) {
+          onDelete(reminder.id);
+        }
+      }}
     >
       {/* 원형 체크박스 */}
       <button

@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getRemindercounts, ReminderCounts } from "@/lib/api";
+import { useCounts } from "@/lib/countsContext";
 import SmartListGrid from "./SmartListGrid";
 
 export default function Sidebar() {
-  const [counts, setCounts] = useState<ReminderCounts>({ today: 0, scheduled: 0, all: 0, flagged: 0 });
-
-  useEffect(() => {
-    getRemindercounts().then(setCounts).catch(() => {});
-  }, []);
+  const { counts } = useCounts();
 
   return (
     <aside
