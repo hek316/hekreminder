@@ -1,6 +1,7 @@
 package com.hekreminder.service;
 
 import com.hekreminder.domain.ReminderList;
+import com.hekreminder.exception.ReminderListNotFoundException;
 import com.hekreminder.service.ports.inp.ReminderListService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,7 @@ class ReminderListServiceTest {
     @DisplayName("findById - 존재하지 않는 id면 예외를 던진다")
     void findById_throws_when_not_found() {
         assertThatThrownBy(() -> reminderListService.findById(999L))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(ReminderListNotFoundException.class)
                 .hasMessageContaining("999");
     }
 
@@ -86,7 +87,7 @@ class ReminderListServiceTest {
     @DisplayName("update - 존재하지 않는 id면 예외를 던진다")
     void update_throws_when_not_found() {
         assertThatThrownBy(() -> reminderListService.update(999L, "업무", "#FF3B30", "💼"))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(ReminderListNotFoundException.class)
                 .hasMessageContaining("999");
     }
 
@@ -98,14 +99,14 @@ class ReminderListServiceTest {
         reminderListService.delete(saved.getId());
 
         assertThatThrownBy(() -> reminderListService.findById(saved.getId()))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(ReminderListNotFoundException.class);
     }
 
     @Test
     @DisplayName("delete - 존재하지 않는 id면 예외를 던진다")
     void delete_throws_when_not_found() {
         assertThatThrownBy(() -> reminderListService.delete(999L))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(ReminderListNotFoundException.class)
                 .hasMessageContaining("999");
     }
 }

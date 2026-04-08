@@ -1,6 +1,7 @@
 package com.hekreminder.service;
 
 import com.hekreminder.domain.Reminder;
+import com.hekreminder.dto.ReminderCountsResponse;
 import com.hekreminder.dto.ReminderRequest;
 import com.hekreminder.exception.ReminderNotFoundException;
 import com.hekreminder.repository.ReminderRepository;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +37,17 @@ public class DefaultReminderService implements ReminderService {
             case "completed" -> reminderRepository.findByCompletedTrue();
             default          -> reminderRepository.findByCompletedFalse();
         };
+    }
+
+    @Override
+    public ReminderCountsResponse getCounts() {
+        LocalDateTime start = LocalDate.now().atStartOfDay();
+        return new ReminderCountsResponse(
+                reminderRepository.countTodayReminders(start, start.plusDays(1)),
+                reminderRepository.countScheduledReminders(LocalDateTime.now()),
+                reminderRepository.countByCompletedFalse(),
+                reminderRepository.countByFlaggedTrueAndCompletedFalse()
+        );
     }
 
     @Override

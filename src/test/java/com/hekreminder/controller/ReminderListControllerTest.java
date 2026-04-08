@@ -100,12 +100,12 @@ class ReminderListControllerTest {
     }
 
     @Test
-    @DisplayName("PUT /api/lists/{id} - 존재하지 않는 id면 400을 반환한다")
-    void update_returns_400_when_not_found() throws Exception {
+    @DisplayName("PUT /api/lists/{id} - 존재하지 않는 id면 404를 반환한다")
+    void update_returns_404_when_not_found() throws Exception {
         mockMvc.perform(put("/api/lists/999")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(toJson(new ReminderListRequest("업무", "#FF3B30", "💼"))))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -125,10 +125,10 @@ class ReminderListControllerTest {
     }
 
     @Test
-    @DisplayName("DELETE /api/lists/{id} - 존재하지 않는 id면 400을 반환한다")
-    void delete_returns_400_when_not_found() throws Exception {
+    @DisplayName("DELETE /api/lists/{id} - 존재하지 않는 id면 404를 반환한다")
+    void delete_returns_404_when_not_found() throws Exception {
         mockMvc.perform(delete("/api/lists/999"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isNotFound());
     }
 
     private String toJson(Object obj) throws Exception {

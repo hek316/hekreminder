@@ -3,6 +3,7 @@ package com.hekreminder.service;
 import com.hekreminder.domain.Priority;
 import com.hekreminder.domain.Reminder;
 import com.hekreminder.dto.ReminderRequest;
+import com.hekreminder.exception.ReminderNotFoundException;
 import com.hekreminder.repository.ReminderRepository;
 import com.hekreminder.service.ports.inp.ReminderService;
 import org.junit.jupiter.api.BeforeEach;
@@ -118,14 +119,14 @@ class DefaultReminderServiceTest {
         reminderService.delete(created.getId());
 
         assertThatThrownBy(() -> reminderService.findById(created.getId()))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(ReminderNotFoundException.class);
     }
 
     @Test
     @DisplayName("존재하지 않는 id면 예외를 던진다")
     void findById_throws_when_not_found() {
         assertThatThrownBy(() -> reminderService.findById(999L))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(ReminderNotFoundException.class)
                 .hasMessageContaining("999");
     }
 

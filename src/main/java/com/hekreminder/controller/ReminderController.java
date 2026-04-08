@@ -3,15 +3,11 @@ package com.hekreminder.controller;
 import com.hekreminder.dto.ReminderCountsResponse;
 import com.hekreminder.dto.ReminderRequest;
 import com.hekreminder.dto.ReminderResponse;
-import com.hekreminder.repository.ReminderRepository;
 import com.hekreminder.service.ports.inp.ReminderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import java.util.List;
 
@@ -21,17 +17,10 @@ import java.util.List;
 public class ReminderController {
 
     private final ReminderService reminderService;
-    private final ReminderRepository reminderRepository;
 
     @GetMapping("/counts")
     public ReminderCountsResponse getCounts() {
-        LocalDateTime start = LocalDate.now().atStartOfDay();
-        return new ReminderCountsResponse(
-                reminderRepository.countTodayReminders(start, start.plusDays(1)),
-                reminderRepository.countScheduledReminders(LocalDateTime.now()),
-                reminderRepository.countByCompletedFalse(),
-                reminderRepository.countByFlaggedTrueAndCompletedFalse()
-        );
+        return reminderService.getCounts();
     }
 
     @GetMapping

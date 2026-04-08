@@ -18,7 +18,7 @@
   - `ReminderNotFoundException extends RuntimeException` 커스텀 예외 생성
   - "not found" → `404 NOT_FOUND`, 유효성 오류 → `400 BAD_REQUEST`
 
-- [ ] **[C3] Controller에서 Repository 직접 의존 제거**
+- [x] **[C3] Controller에서 Repository 직접 의존 제거**
   - 파일: `controller/ReminderController.java:26`
   - `getCounts()` 로직을 `ReminderService`로 이동
   - Controller는 Service만 의존하도록 수정
