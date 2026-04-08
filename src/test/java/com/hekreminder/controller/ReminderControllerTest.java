@@ -149,6 +149,29 @@ class ReminderControllerTest {
     }
 
     @Test
+    @DisplayName("GET /api/reminders/{id} - 존재하지 않는 id는 404를 반환한다")
+    void getById_returns_404_when_not_found() throws Exception {
+        mockMvc.perform(get("/api/reminders/99999"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("PUT /api/reminders/{id} - 존재하지 않는 id 수정 시 404를 반환한다")
+    void update_returns_404_when_not_found() throws Exception {
+        mockMvc.perform(put("/api/reminders/99999")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(req("제목", null, null, Priority.NONE, false))))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("DELETE /api/reminders/{id} - 존재하지 않는 id 삭제 시 404를 반환한다")
+    void delete_returns_404_when_not_found() throws Exception {
+        mockMvc.perform(delete("/api/reminders/99999"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     @DisplayName("DELETE /api/reminders/{id} - 204를 반환하고 삭제된다")
     void delete_returns_204() throws Exception {
         String body = mockMvc.perform(post("/api/reminders")

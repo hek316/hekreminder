@@ -13,7 +13,7 @@
   - `@CrossOrigin` 제거 → 전역 `WebMvcConfigurer` Bean으로 교체
   - origin을 환경변수 `CORS_ALLOWED_ORIGINS`로 주입
 
-- [ ] **[C2] IllegalArgumentException 예외 처리 분리 (400 vs 404)**
+- [x] **[C2] IllegalArgumentException 예외 처리 분리 (400 vs 404)**
   - 파일: `controller/GlobalExceptionHandler.java:13`
   - `ReminderNotFoundException extends RuntimeException` 커스텀 예외 생성
   - "not found" → `404 NOT_FOUND`, 유효성 오류 → `400 BAD_REQUEST`

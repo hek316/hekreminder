@@ -2,6 +2,7 @@ package com.hekreminder.service;
 
 import com.hekreminder.domain.Reminder;
 import com.hekreminder.dto.ReminderRequest;
+import com.hekreminder.exception.ReminderNotFoundException;
 import com.hekreminder.repository.ReminderRepository;
 import com.hekreminder.service.ports.inp.ReminderService;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class DefaultReminderService implements ReminderService {
     @Override
     public Reminder findById(Long id) {
         return reminderRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Reminder not found: " + id));
+                .orElseThrow(() -> new ReminderNotFoundException(id));
     }
 
     @Override
@@ -87,7 +88,7 @@ public class DefaultReminderService implements ReminderService {
     @Transactional
     public void delete(Long id) {
         if (!reminderRepository.existsById(id)) {
-            throw new IllegalArgumentException("Reminder not found: " + id);
+            throw new ReminderNotFoundException(id);
         }
         reminderRepository.deleteById(id);
     }

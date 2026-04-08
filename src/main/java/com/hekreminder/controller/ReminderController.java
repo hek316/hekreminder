@@ -42,6 +42,11 @@ public class ReminderController {
                 .toList();
     }
 
+    @GetMapping("/{id}")
+    public ReminderResponse getById(@PathVariable Long id) {
+        return ReminderResponse.from(reminderService.findById(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ReminderResponse create(@Valid @RequestBody ReminderRequest request) {

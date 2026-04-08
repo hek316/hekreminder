@@ -1,6 +1,7 @@
 package com.hekreminder.service;
 
 import com.hekreminder.domain.ReminderList;
+import com.hekreminder.exception.ReminderListNotFoundException;
 import com.hekreminder.service.ports.inp.ReminderListService;
 import com.hekreminder.repository.ReminderListRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class DefaultReminderListService implements ReminderListService {
     @Override
     public ReminderList findById(Long id) {
         return reminderListRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ReminderList not found: " + id));
+                .orElseThrow(() -> new ReminderListNotFoundException(id));
     }
 
     @Override
@@ -45,7 +46,7 @@ public class DefaultReminderListService implements ReminderListService {
     @Transactional
     public void delete(Long id) {
         if (!reminderListRepository.existsById(id)) {
-            throw new IllegalArgumentException("ReminderList not found: " + id);
+            throw new ReminderListNotFoundException(id);
         }
         reminderListRepository.deleteById(id);
     }
